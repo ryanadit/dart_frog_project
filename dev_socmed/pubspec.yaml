@@ -1,0 +1,21 @@
+name: dev_socmed
+description: Social Media for Developer
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  crypto: ^3.0.3
+  dart_frog: ^1.0.0
+  dart_frog_auth: ^1.1.0
+  dart_jsonwebtoken: ^2.12.1
+  equatable: ^2.0.5
+  intl: ^0.18.1
+  mysql_client: ^0.0.25
+
+dev_dependencies:
+  mocktail: ^1.0.0
+  test: ^1.19.2
+  very_good_analysis: ^5.1.0
