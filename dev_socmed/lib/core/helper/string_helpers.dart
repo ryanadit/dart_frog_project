@@ -9,7 +9,10 @@ class StringHelpers {
   static const String getMethod = 'get';
   static const String deleteMethod = 'delete';
   static const String putMethod = 'put';
-  static const String profileDbName = 'profile';
+  // for db
+  static const String profileTableName = 'profile';
+  static const String tokenTableName = 'token';
+  static const String postTableName = 'post';
 
   static final DateFormat formatDate = DateFormat('yyyy-MM-dd HH:mm:ss');
 

@@ -13,7 +13,7 @@ class ProflieDatasource implements ProfileRepository {
   Future<List<ProfileModel>> fetchProfile() async {
     try {
       final listProfile = <ProfileModel>[];
-      const sqlQuery = 'SELECT * FROM ${StringHelpers.profileDbName}';
+      const sqlQuery = 'SELECT * FROM ${StringHelpers.profileTableName}';
       // executing our sqlQuery
       final result = await sqlClient.execute(sqlQuery);
       if (result != null) {
@@ -31,7 +31,7 @@ class ProflieDatasource implements ProfileRepository {
   Future<ProfileModel?> getDetailProfile(String idProfile) async {
     try {
       ProfileModel? profile;
-      final sqlQuery = '''SELECT * FROM ${StringHelpers.profileDbName} WHERE user_id ="$idProfile"''';
+      final sqlQuery = '''SELECT * FROM ${StringHelpers.profileTableName} WHERE user_id ="$idProfile"''';
       final result = await sqlClient.execute(sqlQuery);
       if (result != null && result.rows.isNotEmpty) {
         profile = ProfileModel.fromRowAssoc(result.rows.first.assoc());
@@ -50,7 +50,7 @@ class ProflieDatasource implements ProfileRepository {
         'code' : HttpStatus.badRequest,
       };
       const sqlQuery =
-          '''INSERT INTO ${StringHelpers.profileDbName} (name, email, gender, city, created_at, updated_at, user_id, password) VALUES (:name, :email, :gender, :city, :created_at, :updated_at, :user_id, :password)''';
+          '''INSERT INTO ${StringHelpers.profileTableName} (name, email, gender, city, created_at, updated_at, user_id, password) VALUES (:name, :email, :gender, :city, :created_at, :updated_at, :user_id, :password)''';
       final result = await sqlClient.execute(
         sqlQuery,
         params: data.toJson(),
@@ -74,7 +74,7 @@ class ProflieDatasource implements ProfileRepository {
     try {
       var isUpdate = false;
       final sqlQuery = '''
-          UPDATE ${StringHelpers.profileDbName} SET (name, email, gender, city, created_at, updated_at, password) VALUES (:name, :email, :gender, :city, :created_at, :updated_at, :password)
+          UPDATE ${StringHelpers.profileTableName} SET name = :name, email = :email, gender = :gender, city = :city, created_at = :created_at, updated_at = :updated_at, password = :password
           WHERE user_id = ${data.userId}
         ''';
       final result = await sqlClient.execute(

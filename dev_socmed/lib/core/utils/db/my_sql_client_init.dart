@@ -1,3 +1,4 @@
+import 'package:dev_socmed/core/utils/config/config_env.dart';
 import 'package:mysql_client/mysql_client.dart';
 
 /// creating a database connection with MySQL
@@ -19,15 +20,15 @@ class MySQLClient{
   Future<void> _connect() async {
     _connection = await MySQLConnection.createConnection(
       // "localhost" OR 127.0.0.1
-      host: '127.0.0.1',
+      host: '${ConfigEnv.dbHost}',
       // Your MySQL port
-      port: 8080,
+      port: ConfigEnv.dbPort ?? 8000,
       // MySQL userName
-      userName: 'root',
+      userName: '${ConfigEnv.dbUsername}',
       // MySQL Database password
-      password: '12345678',
+      password: '${ConfigEnv.dbPassword}',
       // your database name
-      databaseName: 'dev_socmed',
+      databaseName: '${ConfigEnv.dbName}',
       // false - if your are not using SSL - otherwise it will through an error
       // secure: false,
     );

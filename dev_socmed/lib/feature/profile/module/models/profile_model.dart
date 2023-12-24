@@ -13,6 +13,7 @@ class ProfileModel extends Equatable {
     this.updatedAt,
     this.city,
     this.userId,
+    this.expiryDateToken,
   });
 
   final String? name;
@@ -23,6 +24,7 @@ class ProfileModel extends Equatable {
   final String? createdAt;
   final String? updatedAt;
   final String? userId;
+  final String? expiryDateToken;
 
   ProfileModel copyWith({
     String? name,
@@ -33,6 +35,7 @@ class ProfileModel extends Equatable {
     String? createdAt,
     String? updatedAt,
     String? userId,
+    String? expiryDateToken,
   }) => ProfileModel(
     name: name ?? this.name,
     password: password ?? this.password,
@@ -42,6 +45,7 @@ class ProfileModel extends Equatable {
     createdAt: createdAt ?? this.createdAt,
     updatedAt: updatedAt ?? this.updatedAt,
     userId: userId ?? this.userId,
+    expiryDateToken: expiryDateToken ?? this.expiryDateToken
   );
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -53,6 +57,7 @@ class ProfileModel extends Equatable {
     createdAt: json['created_at'] as String?,
     updatedAt: json['updated_at'] as String?,
     userId: json['user_id'] as String?,
+    expiryDateToken: json['expiry_date_token'] as String?,
   );
 
   factory ProfileModel.fromRowAssoc(Map<String, String?> json) => ProfileModel(
@@ -64,6 +69,7 @@ class ProfileModel extends Equatable {
     createdAt: json['created_at'],
     updatedAt: json['updated_at'],
     userId: json['user_id'],
+    expiryDateToken: json['expiry_date_token'],
   );
 
   // toJSON
@@ -77,6 +83,7 @@ class ProfileModel extends Equatable {
       'updated_at': updatedAt.toString(),
       'user_id': userId.toString(),
       'password': password.toString(),
+      'expiry_date_token' : expiryDateToken.toString()
     };
   }
 
@@ -102,5 +109,6 @@ class ProfileModel extends Equatable {
     createdAt,
     updatedAt,
     userId,
+    expiryDateToken,
   ];
 }
